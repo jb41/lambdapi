@@ -32,7 +32,7 @@ query = ARGV[0]
 search_results = get_search_results(query)
 
 # Print the results as proper JSON
-puts JSON.pretty_generate({ \"r\": search_results})
+puts JSON.pretty_generate({ "r": search_results})
 ', datetime('now'));
 
 INSERT INTO functions (slug, runtime, name, code, created_at) VALUES ('h7oggnvtyxfmvps1', 'python', 'Generate an image with a text from the user',
