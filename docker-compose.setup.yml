@@ -6,5 +6,4 @@ services:
     command: python setup.py
     volumes:
       - .:/app
-      - ./functions.db:/app/functions.db
       - /var/run/docker.sock:/var/run/docker.sock

@@ -3,13 +3,16 @@ import os, \
 
 from services.config import runtimes_config as rt_config
 from services.create_dockerfile import CreateDockerfile
-from services.database import create_table, seed_database
+from services.database import create_table, seed_database, database_name
 from services.helpers import dockerfiles_dir
 
 
 
 # Create functions table
 print("Creating functions table...")
+if not os.path.exists(database_name):
+    with open(database_name, 'a'):
+        pass
 create_table()
 seed_database()
 
