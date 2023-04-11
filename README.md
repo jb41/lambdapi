@@ -92,13 +92,15 @@ Run
 ```sh
 docker-compose up --build
 ```
-Visit [localhost:8000](localhost:8000) to view the dashboard.
+Visit [localhost:8000/index.html](localhost:8000/index.html) to view the dashboard.
 
 ## Without Docker
 Run
 ```sh
 python3 main.py
 ```
+
+Visit []
 
 # 📄 Documentation
 
