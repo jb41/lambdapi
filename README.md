@@ -100,7 +100,7 @@ Run
 python3 main.py
 ```
 
-Visit []
+Visit [http://localhost:8000/index.html](http://localhost:8000/index.html) to view the dashboard.
 
 # 📄 Documentation
 
