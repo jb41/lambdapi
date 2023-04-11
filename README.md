@@ -16,8 +16,6 @@ command line parameters as input ->
 This simplicity caters to both humans and LLMs, making it easier for anyone to create and deploy code.
 With support for multiple runtimes and an emphasis on simplicity, LambdaPi enables developers and LLMs alike to create powerful, efficient code with minimal barriers to entry.
 
-[See a demo](#demo)
-
 View the system prompt configuration in [config.yaml.example](config.yaml.example)
 
 # 🎬 Demo
