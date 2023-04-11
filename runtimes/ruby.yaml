@@ -1,0 +1,9 @@
+name: "Ruby 3.2"
+maximum_number_of_params: 16
+docker:
+  repository_image: "ruby:3.2"
+  run_cmd: "gem install bundler && echo \"source 'https://rubygems.org'\" >> Gemfile && echo \"gem 'httparty'\" >> Gemfile && echo \"gem 'nokogiri'\" >> Gemfile && echo \"gem 'rmagick'\" >> Gemfile && echo \"gem 'redis'\" >> Gemfile && echo \"gem 'aws-sdk-s3'\" >> Gemfile && echo \"gem 'csv'\" >> Gemfile && echo \"gem 'mechanize'\" >> Gemfile && bundle install"
+image_name: "ruby-3-2"
+monaco_editor_id: ruby
+run:
+  execute: "ruby /app/main"

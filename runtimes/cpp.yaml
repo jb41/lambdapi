@@ -1,0 +1,10 @@
+name: "C++"
+maximum_number_of_params: 16
+docker:
+  repository_image: "ubuntu:22.04"
+  run_cmd: "export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -y g++ git cmake libboost-all-dev libarmadillo-dev libopencv-dev libcurl4-openssl-dev libpoco-dev libhiredis-dev libprotobuf-dev protobuf-compiler && git clone https://github.com/nlohmann/json.git && cd json && mkdir build && cd build && cmake .. && make && make install && cd ../.. && rm -rf json && apt-get clean"
+image_name: "cpp"
+monaco_editor_id: cpp
+run:
+  compile: "g++ -x c++ /app/main -o /app/main.out -lboost_system -lboost_filesystem -larmadillo -lopencv_core -lopencv_highgui -lopencv_imgproc -lcurl -lPocoFoundation -lPocoNet -lhiredis -lprotobuf"
+  execute: "/app/main.out"

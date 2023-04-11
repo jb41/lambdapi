@@ -1,0 +1,9 @@
+name: "Node.js 16"
+maximum_number_of_params: 16
+docker:
+  repository_image: "node:16"
+  run_cmd: "npm install --save axios node-fetch request got lodash moment csv-parser sharp jimp gm aws-sdk redis mongoose knex"
+image_name: "nodejs-16"
+monaco_editor_id: javascript
+run:
+  execute: "node /app/main"

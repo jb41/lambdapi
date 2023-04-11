@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>λπ LambdaPi</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@700&display=swap" rel="stylesheet">
+
+    <link href="css/style.css" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.31.1/min/vs/loader.min.js"></script>
+</head>
+<body class="d-flex flex-column vh-100">
+    <header class="container-fluid bg-light py-3">
+        <h1><span class="logo gradient-text">λπ</span> <strong>LambdaPi</strong></h1>
+        <p><em>Serverless Meets Language Models</em></p>
+    </header>
+
+    <main class="container-fluid flex-grow-1 d-flex flex-column">
+        <section class="row">
+            <div class="col">
+                <a href="/index.html"><i class="bi bi-arrow-left"></i> Back to functions</a>
+            </div>
+        </section>
+
+        <section class="row mt-3">
+            <div class="col">
+                <h3 id="function-name" class="contenteditable" contenteditable="true">Function name</h3>
+            </div>
+        </section>
+
+        <section class="row mt-3">
+            <div class="col">
+                <p class="mb-0"><small>Endpoint URL:</small></p>
+                <a id="function-endpoint-url"></a>
+                <button id="copy-api-link"class="btn btn-link" onclick="copyEndpointUrlToClipboard()"><i class="bi bi-clipboard2"></i></button>
+            </div>
+        </section>
+
+        <section class="row align-items-center my-3">
+            <div class="col-auto">
+                <label for="runtime" class="col-form-label">Runtime</label>
+            </div>
+            <div class="col-auto">
+                <select id="function-runtime" class="form-select"></select>
+            </div>
+            <div class="col-auto">
+                <button id="prev-code-in-history" class="btn btn-link" onclick="navigateCodeHistory(-1)" disabled="true"><i class="bi bi-chevron-left"></i> previous code version</button>
+                &nbsp;|&nbsp;
+                <button id="next-code-in-history" class="btn btn-link" onclick="navigateCodeHistory(1)" disabled="true">next code version <i class="bi bi-chevron-right"></i></button>
+            </div>
+        </section>
+
+        <section class="row flex-grow-1 code-text-row">
+            <div class="col-md-8 full-height">
+                <p class="mb-0"><small>Code:</small></p>
+                <div id="code-editor" class="editor-container"></div>
+            </div>
+            <div class="col-md-4 full-height">
+                <p class="mb-0"><small>LLM non-code output:</small></p>
+                <div id="output" class="output-container p-3">
+                </div>
+            </div>
+        </section>
+
+        <section class="row my-3">
+            <div class="col">
+                <div class="textarea-container">
+                    <textarea
+                        class="form-control prompt-input mt-2 fs-0"
+                        id="llm-prompt"
+                        rows="1"
+                        placeholder="Your code prompt. Ex. Write function multiplying two values passed in params"
+                    ></textarea>
+                    <!-- 
+                        TODO:
+                        Run getCompletion() on Enter key press
+                     -->
+                    <button id="generate-code" class="btn btn-link floating-button" onclick="getCompletion()">
+                        <i class="bi bi-send"></i>
+                        <em>generate code</em>
+                    </button>
+                </div>
+            </div>
+        </section>
+       
+        <section class="row my-3">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <button class="btn btn-link" type="button" data-bs-toggle="collapse" data-bs-target="#input-params-pane">
+                            Input parameters
+                        </button>
+                        <em>Add parameters to the request</em>
+                    </div>
+                    <div class="collapse" id="input-params-pane">
+                        <div class="card-body">
+                            <textarea id="input-params" class="form-control" rows="3" placeholder="Enter input parameters (one per line)"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="row">
+            <div class="col">
+                <button id="save-and-run" class="btn btn-success btn-lg" onclick="saveAndRun()">
+                    <i class="bi bi-lightning-charge"></i>&nbsp;Save & Run
+                </button>
+            </div>
+        </section>
+
+        <section class="row my-5">
+            <div class="col">
+                <h2>Result:</h2>
+                <div id="result-output">
+                    <em>
+                        The outcome will be displayed here, which may include JSON data, an image, or a downloadable
+                        file. You can execute the code independently by making an API request.
+                    </em>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="container-fluid bg-light py-3">
+        <small>
+            <p>
+                LambdaPi v1.0.0&nbsp;|&nbsp;
+                <a target="_blank" href="https://github.com/jb41/lambdapi"><i class="bi bi-github"></i>&nbsp;GitHub</a>
+            </p>
+        </small>
+    </footer>
+
+    <div id="spinner" class="spinner-container">
+        <div class="spinner"></div>
+    </div>
+
+    <script src="js/function-details.js"></script>
+</body>
+</html>

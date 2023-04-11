@@ -1,0 +1,13 @@
+name: "Kali Linux"
+maximum_number_of_params: 16
+docker:
+  repository_image: "kalilinux/kali-rolling"
+  run_cmd: |
+    export DEBIAN_FRONTEND=noninteractive \
+    && apt-get update && apt-get install -y kali-linux-headless \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+image_name: "kali-linux"
+monaco_editor_id: shell
+run:
+  execute: "bash /app/main"

@@ -1,0 +1,115 @@
+body {
+    font-family: 'Nunito Sans', sans-serif;
+    background-color: #f5f7fa;
+    color: #151823;
+}
+
+.bg-light {
+    background-color: #f5f7fa !important;
+}
+
+h1, h2, h3 {
+    font-weight: 600;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.logo {
+    font-size: 3rem;
+    font-weight: 700;
+    font-family: 'Noto Serif', serif;
+    background-image: linear-gradient(to right, #09203F, #537895);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline;
+}
+
+.container-fluid {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.full-height {
+    height: 100%;
+}
+
+.editor-container,
+.output-container {
+    height: 95%;
+    overflow: auto;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.card {
+    background-color: #f8f9fa;
+    border-color: #dee2e6;
+}
+
+.spinner-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.spinner {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    border: 8px solid #f3f3f3;
+    border-radius: 50%;
+    border-top-color: #3498db;
+    animation: spin 0.42s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.contenteditable {
+    transition: border 0.2s, border-radius 0.2s;
+}
+
+.contenteditable:hover {
+    border: 1px solid blue;
+    border-radius: 3px;
+}
+
+.code-text-row {
+    min-height: 340px;
+}
+
+.textarea-container {
+    position: relative;
+}
+
+.floating-button {
+    position: absolute;
+    bottom: -2px;
+    right: 10px;
+    z-index: 10;
+    padding: 0.5rem;
+}
+
+.prompt-input {
+    resize: none;
+}

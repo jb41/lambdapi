@@ -1,0 +1,9 @@
+name: "Python 3.10"
+maximum_number_of_params: 16
+docker:
+  repository_image: "python:3.10"
+  run_cmd: "pip install --no-cache-dir pandas numpy matplotlib scikit-learn scipy statsmodels redis requests Pillow beautifulsoup4 lxml boto3 google-cloud-storage seaborn gensim geopy arrow"
+image_name: "python-3-10"
+monaco_editor_id: python
+run:
+  execute: "python /app/main"

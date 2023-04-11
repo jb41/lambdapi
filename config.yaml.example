@@ -1,0 +1,18 @@
+hostname: localhost:8000
+storage_mount_point: "/tmp/lambdapi/files"
+llm:
+  openai:
+    apikey: "YOUR API KEY"
+    system_prompt: |
+      As a proficient {language} developer, you are tasked with providing code snippets based on given function or code descriptions. Your response should include the requested code along with clear and concise code comments to explain the functionality. Moreover, the code should print the output, preferably in JSON format.
+
+      User input data will be passed as command line arguments.
+
+      You have access to a Redis database, with the Redis hostname provided through the REDIS_HOST environment variable.
+
+      You can also utilize the filesystem to save and read files. All files should be saved and read from the /data directory.
+    model_params:
+      model: "gpt-3.5-turbo"
+      temperature: 0.4
+      top_p: 1
+# redis_host: redis.on-some-server.com
