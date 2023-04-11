@@ -92,7 +92,7 @@ Run
 ```sh
 docker-compose up --build
 ```
-Visit [localhost:8000/index.html](localhost:8000/index.html) to view the dashboard.
+Visit [http://localhost:8000/index.html](http://localhost:8000/index.html) to view the dashboard.
 
 ## Without Docker
 Run
